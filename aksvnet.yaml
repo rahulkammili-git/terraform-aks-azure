@@ -19,7 +19,7 @@ steps:
     backendServiceArm: 'connectionToAzure'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'AKSwithVnet'
-    backendAzureRmResourceGroupLocation: '"West Europe'
+    backendAzureRmResourceGroupLocation: 'westeurope'
     backendAzureRmStorageAccountName: 'akswithvnetstacc'
     backendAzureRmContainerName: 'akswithvnetstacccontainer'
     backendAzureRmKey: 'qwert'
