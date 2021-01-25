@@ -8,7 +8,7 @@ variable client_id {}
 variable client_secret {}
 
 variable "location" {
-  default     = "WestEurope"
+  default     = "westeurope"
   description = "The Azure Region in which all resources in this example should be provisioned"
 }
 
