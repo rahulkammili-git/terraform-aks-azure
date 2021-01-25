@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    backendType: 'azurerm'
+    backendServiceArm: 'connectionToAzure'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'AKSwithVnet'
+    backendAzureRmResourceGroupLocation: '"West Europe'
+    backendAzureRmStorageAccountName: 'akswithvnetstacc'
+    backendAzureRmContainerName: 'akswithvnetstacccontainer'
+    backendAzureRmKey: 'qwert'
+    allowTelemetryCollection: true
+
+
