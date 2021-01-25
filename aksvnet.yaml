@@ -19,10 +19,16 @@ steps:
     backendServiceArm: 'connectionToAzure'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'AKSwithVnet'
-    backendAzureRmResourceGroupLocation: '"West Europe'
+    backendAzureRmResourceGroupLocation: 'westeurope'
     backendAzureRmStorageAccountName: 'akswithvnetstacc'
     backendAzureRmContainerName: 'akswithvnetstacccontainer'
     backendAzureRmKey: 'qwert'
     allowTelemetryCollection: true
-
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    environmentServiceName: 'connectionToAzure'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret)'
+    allowTelemetryCollection: true
 
