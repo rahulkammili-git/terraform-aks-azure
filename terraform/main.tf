@@ -46,16 +46,21 @@ resource "azurerm_kubernetes_cluster" "demo" {
     type = "SystemAssigned"
   }
 
-  role_based_access_control {
-    azure_active_directory {
-      client_app_id     = var.client_app_id
-      server_app_id     = var.server_app_id
-      server_app_secret = var.server_app_secret
-      tenant_id         = var.tenant_id
-    }
-    enabled = true
-  }
+  #role_based_access_control {
+   # azure_active_directory {
+    #  client_app_id     = var.client_app_id
+    #  server_app_id     = var.server_app_id
+     # server_app_secret = var.server_app_secret
+     # tenant_id         = var.tenant_id
+   # }
+   # enabled = true
+  #}
 
+service_principal {
+    client_id     = var.client_id
+    client_secret = var.client_secret
+  }
+  
   network_profile {
     network_plugin    = "azure"
     load_balancer_sku = "standard"
